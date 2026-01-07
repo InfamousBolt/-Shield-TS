@@ -3,7 +3,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-green.svg)](https://nodejs.org/)
 [![Redis](https://img.shields.io/badge/Redis-7-red.svg)](https://redis.io/)
-[![License](https://img.shields.io/badge/License-ISC-yellow.svg)](LICENSE)
 
 A **zero-trust API gateway** built with TypeScript that acts as a security proxy, enforcing architectural invariants before forwarding requests to backend microservices. Designed with production-grade security patterns used by companies like Stripe.
 
@@ -319,21 +318,6 @@ This project demonstrates:
 ✅ **No Secrets in Logs**: Automatic redaction of tokens and credentials
 ✅ **Request Size Limits**: DoS protection at gateway level
 ✅ **Rate Limiting**: Per-client limits with distributed state
-
-## 🤝 Contributing
-
-This is a portfolio/educational project. Feel free to fork and adapt for your own use cases.
-
-## 📄 License
-
-ISC License - see [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-Architecture inspired by production security patterns from:
-- Stripe's API gateway design
-- OWASP security guidelines
-- Zero-trust network architecture principles
 
 ---
 

@@ -1,0 +1,3 @@
+# This directory stores JWT keys
+# Keys are git-ignored for security
+# Run `npm run generate-keys` to create your own keys

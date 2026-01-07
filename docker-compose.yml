@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: shield-ts-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - shield-network
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shield-ts-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PORT=3000
+    volumes:
+      - ./src:/app/src
+      - ./keys:/app/keys:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - shield-network
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+
+networks:
+  shield-network:
+    driver: bridge
